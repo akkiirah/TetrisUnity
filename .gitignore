@@ -1,16 +1,14 @@
 
-# Unity generierte Ordner und Dateien
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
-
-# Lokale Unity-Einstellungen (optional – diese können je nach Bedarf versioniert werden)
+[Ll]ogs/
 UserSettings/
+Assets/ERP/
 
-# Projektdateien, die von der IDE erzeugt werden
 *.csproj
 *.unityproj
 *.sln
@@ -22,7 +20,6 @@ UserSettings/
 *.booproj
 *.svd
 
-# Betriebssystem-spezifische Dateien
 .DS_Store
 .DS_Store?
 ._*
