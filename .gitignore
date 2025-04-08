@@ -19,9 +19,11 @@ Assets/ERP/
 *.pidb
 *.booproj
 *.svd
+*.erp
 
 .DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
+ERP.meta
