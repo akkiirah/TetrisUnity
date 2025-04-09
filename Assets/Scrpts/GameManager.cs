@@ -18,11 +18,8 @@ public class GameManager : MonoBehaviour
             Instance = this;
     }
 
-    // Diese Methode wird aufgerufen, wenn ein Tetromino gelockt wurde.
     public void TetrominoLocked()
     {
-        // Hier kannst du z.B. Punkte berechnen, Reihen überprüfen, Effekte auslösen etc.
-        // Dann das nächste Tetromino spawnen:
         ShapeManager.Instance.SpawnNewTetromino();
     }
 

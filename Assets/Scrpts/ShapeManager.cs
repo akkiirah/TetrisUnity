@@ -31,11 +31,10 @@ public class ShapeManager : MonoBehaviour
     public void SpawnNewTetromino()
     {
         int i = UnityEngine.Random.Range(0, tetrominoPrefabs.Length);
-        GameObject tetromino = Instantiate(tetrominoPrefabs[i], new Vector3(5, 20, 0), Quaternion.identity);
+        GameObject tetromino = Instantiate(tetrominoPrefabs[i], new Vector3((int)Random.Range(2,10), 25, 0), Quaternion.identity);
         Shape tetrominoScript = tetromino.GetComponent<Shape>();
         activeShape = tetrominoScript;
 
-        // Abonniere das OnLocked-Event, sodass der GameManager benachrichtigt wird, wenn das Tetromino fixiert.
         tetrominoScript.OnLocked += GameManager.Instance.TetrominoLocked;
     }
 }
