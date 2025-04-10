@@ -10,18 +10,14 @@ public class Shape : MonoBehaviour
 
     public void MoveDown()
     {
-        int currentY = Mathf.RoundToInt(transform.position.y);
+        // Bewege das Tetromino um eine Einheit nach unten
+        transform.position += new Vector3(0, -1, 0);
 
-        if (currentY > 0)
+        // Ist die neue Position ungültig?
+        if (!IsValidPosition())
         {
-            transform.position = new Vector3(
-                Mathf.Round(transform.position.x),
-                currentY - 1,
-                transform.position.z
-            );
-        }
-        else
-        {
+            // Bewegung zurücksetzen
+            transform.position += new Vector3(0, 1, 0);
             LockTetromino();
         }
     }
@@ -37,4 +33,22 @@ public class Shape : MonoBehaviour
 
         OnLocked?.Invoke();
     }
+
+    public bool IsValidPosition()
+    {
+        foreach (Transform child in transform)
+        {
+            Vector3 pos = GridManager.RoundVector3(child.position);
+
+            if (!GridManager.IsInsideGrid(pos))
+                return false;
+
+            int x = (int)pos.x;
+            int y = (int)pos.y;
+            if (y < GridManager.gridHeight && GridManager.grid[x, y] != null)
+                return false;
+        }
+        return true;
+    }
+
 }

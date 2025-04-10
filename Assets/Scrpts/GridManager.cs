@@ -36,4 +36,29 @@ public class GridManager : MonoBehaviour
     {
         return new Vector3(Mathf.Round(pos.x), Mathf.Round(pos.y), Mathf.Round(pos.z));
     }
+
+    public static bool IsInsideGrid(Vector3 pos)
+    {
+        int x = Mathf.RoundToInt(pos.x);
+        int y = Mathf.RoundToInt(pos.y);
+        return x >= 0 && x < gridWidth && y >= 0; // y wird oft nur nach unten begrenzt
+    }
+
+    public bool IsValidPosition()
+    {
+        foreach (Transform child in transform)
+        {
+            Vector3 pos = GridManager.RoundVector3(child.position);
+
+            if (!GridManager.IsInsideGrid(pos))
+                return false;
+
+            int x = (int)pos.x;
+            int y = (int)pos.y;
+            if (y < GridManager.gridHeight && GridManager.grid[x, y] != null)
+                return false;
+        }
+        return true;
+    }
+
 }
