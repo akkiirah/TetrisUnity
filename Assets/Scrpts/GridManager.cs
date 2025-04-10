@@ -60,5 +60,66 @@ public class GridManager : MonoBehaviour
         }
         return true;
     }
+    public bool IsRowFull(int y)
+    {
+        for (int x = 0; x < gridWidth; x++)
+        {
+            if (grid[x, y] == null)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
+    public void DeleteRow(int y)
+    {
+        for (int x = 0; x < gridWidth; x++)
+        {
+            if (grid[x, y] != null)
+            {
+                Destroy(grid[x, y].gameObject);
+                grid[x, y] = null;
+            }
+        }
+    }
+
+    public void MoveRowsDown(int startY)
+    {
+        for (int y = startY; y < gridHeight; y++)
+        {
+            for (int x = 0; x < gridWidth; x++)
+            {
+                if (grid[x, y] != null)
+                {
+                    // Aktualisiere die Grid-Datenstruktur:
+                    grid[x, y - 1] = grid[x, y];
+                    grid[x, y] = null;
+
+                    // Verschiebe den Block visuell um 1 Einheit nach unten
+                    grid[x, y - 1].position += new Vector3(0, -1, 0);
+                }
+            }
+        }
+    }
+
+    public void DeleteFullRows()
+    {
+        for (int y = 0; y < gridHeight; y++)
+        {
+            if (IsRowFull(y))
+            {
+                DeleteRow(y);
+                MoveRowsDown(y + 1);
+                // Nachdem die Reihen nachgezogen wurden, muss derselbe Index erneut geprüft werden,
+                // da nun eine neue Reihe an dieser Stelle stehen könnte.
+                y--;
+            }
+        }
+    }
+
+    void Update()
+    {
+        DeleteFullRows();
+    }
 }
