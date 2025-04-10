@@ -60,6 +60,23 @@ public class GridManager : MonoBehaviour
         }
         return true;
     }
+    public bool IsValidPosition(Transform _transform)
+    {
+        foreach (Transform child in _transform)
+        {
+            Vector3 pos = GridManager.RoundVector3(child.position);
+
+            if (!GridManager.IsInsideGrid(pos))
+                return false;
+
+            int x = (int)pos.x;
+            int y = (int)pos.y;
+            if (y < GridManager.gridHeight && GridManager.grid[x, y] != null)
+                return false;
+        }
+        return true;
+    }
+
     public bool IsRowFull(int y)
     {
         for (int x = 0; x < gridWidth; x++)

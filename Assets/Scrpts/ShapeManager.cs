@@ -6,6 +6,7 @@ public class ShapeManager : MonoBehaviour
     
     [SerializeField] public GameObject[] tetrominoPrefabs;
     public Shape activeShape;
+    public Vector3 spawnPosition = new Vector3(5, 18, 0);
 
     void Awake()
     {
@@ -31,7 +32,14 @@ public class ShapeManager : MonoBehaviour
     public void SpawnNewTetromino()
     {
         int i = UnityEngine.Random.Range(0, tetrominoPrefabs.Length);
-        GameObject tetromino = Instantiate(tetrominoPrefabs[i], new Vector3(5, 17, 0), Quaternion.identity);
+        GameObject tetromino = Instantiate(tetrominoPrefabs[i], spawnPosition, Quaternion.identity);
+
+        if (!GridManager.Instance.IsValidPosition(tetromino.transform))
+        {
+            GameManager.Instance.GameOver();
+            Destroy(tetromino);
+        }
+
         Shape tetrominoScript = tetromino.GetComponent<Shape>();
         activeShape = tetrominoScript;
 

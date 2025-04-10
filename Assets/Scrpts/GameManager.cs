@@ -34,4 +34,12 @@ public class GameManager : MonoBehaviour
             OnTick?.Invoke();
         }
     }
+
+    public void GameOver()
+    {
+        InputManager.Instance.enabled = false;
+        GridManager.Instance.enabled = false;
+        ShapeManager.Instance.enabled = false;
+        Debug.Log("GameOver");
+    }
 }
