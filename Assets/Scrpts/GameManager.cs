@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] public float tickInterval = 1f;
-    public float tickTimer;
+    public ReflectionProbe reflectionProbe;
+    public float tickInterval = 1f;
+    private float tickTimer;
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -21,12 +22,12 @@ public class GameManager : MonoBehaviour
         if (tickTimer >= tickInterval)
         {
             tickTimer = 0f;
+            reflectionProbe.RenderProbe();
             OnTick?.Invoke();
         }
     }
 
     public event Action OnTick;
-    public event Action OnInputTick;
 
     public void TetrominoLocked()
     {

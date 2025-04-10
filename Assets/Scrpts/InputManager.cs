@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    private readonly float repeatDelay = .5f;
+    private readonly float repeatRate = 0.05f;
+    private float lastRepeatTime;
+    private bool sKeyIsHeld;
+
+    private float sKeyPressTime;
     public static InputManager Instance { get; private set; }
 
     private void Awake()
@@ -50,7 +56,29 @@ public class InputManager : MonoBehaviour
 
     public int GetInputVertical()
     {
-        var verticalInput = Input.GetKeyDown(KeyCode.W) ? 1 : Input.GetKeyDown(KeyCode.S) ? -1 : 0;
+        var verticalInput = 0;
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            verticalInput = -1;
+            sKeyPressTime = Time.time;
+            sKeyIsHeld = true;
+            lastRepeatTime = Time.time;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            if (sKeyIsHeld)
+                if (Time.time - sKeyPressTime >= repeatDelay)
+                    if (Time.time - lastRepeatTime >= repeatRate)
+                    {
+                        verticalInput = -1;
+                        lastRepeatTime = Time.time;
+                    }
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            sKeyIsHeld = false;
+        }
 
         return verticalInput;
     }
