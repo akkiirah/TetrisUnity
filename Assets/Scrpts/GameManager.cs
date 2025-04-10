@@ -6,9 +6,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] public float tickInterval = 1f;
-    private float tickTimer = 0f;
+    public float tickTimer = 0f;
 
     public event Action OnTick;
+    public event Action OnInputTick;
 
     void Awake()
     {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         else
             Instance = this;
+
     }
 
     public void TetrominoLocked()

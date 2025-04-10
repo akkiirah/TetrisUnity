@@ -10,15 +10,31 @@ public class Shape : MonoBehaviour
 
     public void MoveDown()
     {
-        // Bewege das Tetromino um eine Einheit nach unten
         transform.position += new Vector3(0, -1, 0);
 
-        // Ist die neue Position ungültig?
         if (!IsValidPosition())
         {
-            // Bewegung zurücksetzen
             transform.position += new Vector3(0, 1, 0);
             LockTetromino();
+        }
+    }
+
+    public void MoveHorizontal(int dir)
+    {
+        transform.position += new Vector3(dir, 0, 0);
+
+        if (!IsValidPosition())
+        {
+            transform.position += new Vector3((dir * -1), 0, 0);
+        }
+    }
+    public void Rotate()
+    {
+        transform.Rotate(new Vector3(0, 0, 90));
+
+        if (!IsValidPosition())
+        {
+            transform.Rotate(new Vector3(0, 0, -90));
         }
     }
 

@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "D:\\Unity\\TetrisUnity\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0012D882-2468-C65A-BB1C-E0DDB80832C1}|Assembly-CSharp.csproj|D:\\Unity\\TetrisUnity\\assets\\scrpts\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0012D882-2468-C65A-BB1C-E0DDB80832C1}|Assembly-CSharp.csproj|solutionrelative:assets\\scrpts\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0012D882-2468-C65A-BB1C-E0DDB80832C1}|Assembly-CSharp.csproj|D:\\Unity\\TetrisUnity\\assets\\scrpts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0012D882-2468-C65A-BB1C-E0DDB80832C1}|Assembly-CSharp.csproj|solutionrelative:assets\\scrpts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0012D882-2468-C65A-BB1C-E0DDB80832C1}|Assembly-CSharp.csproj|d:\\unity\\tetrisunity\\assets\\scrpts\\shapemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0012D882-2468-C65A-BB1C-E0DDB80832C1}|Assembly-CSharp.csproj|D:\\Unity\\TetrisUnity\\assets\\scrpts\\shapemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0012D882-2468-C65A-BB1C-E0DDB80832C1}|Assembly-CSharp.csproj|solutionrelative:assets\\scrpts\\shapemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,8 +15,8 @@
       "RelativeMoniker": "D:0:0:{0012D882-2468-C65A-BB1C-E0DDB80832C1}|Assembly-CSharp.csproj|solutionrelative:assets\\scrpts\\shape.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0012D882-2468-C65A-BB1C-E0DDB80832C1}|Assembly-CSharp.csproj|D:\\Unity\\TetrisUnity\\assets\\scrpts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0012D882-2468-C65A-BB1C-E0DDB80832C1}|Assembly-CSharp.csproj|solutionrelative:assets\\scrpts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0012D882-2468-C65A-BB1C-E0DDB80832C1}|Assembly-CSharp.csproj|d:\\unity\\tetrisunity\\assets\\scrpts\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0012D882-2468-C65A-BB1C-E0DDB80832C1}|Assembly-CSharp.csproj|solutionrelative:assets\\scrpts\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,17 +26,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "GameManager.cs",
               "DocumentMoniker": "D:\\Unity\\TetrisUnity\\Assets\\Scrpts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scrpts\\GameManager.cs",
               "ToolTip": "D:\\Unity\\TetrisUnity\\Assets\\Scrpts\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scrpts\\GameManager.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAADwvyMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T17:11:43.937Z",
               "EditorCaption": ""
@@ -62,20 +62,20 @@
               "RelativeDocumentMoniker": "Assets\\Scrpts\\Shape.cs",
               "ToolTip": "D:\\Unity\\TetrisUnity\\Assets\\Scrpts\\Shape.cs",
               "RelativeToolTip": "Assets\\Scrpts\\Shape.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAuwCQAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAuwCcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T16:47:09.438Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "GridManager.cs",
               "DocumentMoniker": "D:\\Unity\\TetrisUnity\\Assets\\Scrpts\\GridManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scrpts\\GridManager.cs",
               "ToolTip": "D:\\Unity\\TetrisUnity\\Assets\\Scrpts\\GridManager.cs",
               "RelativeToolTip": "Assets\\Scrpts\\GridManager.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAwCwAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAwCwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T16:33:51.142Z",
               "EditorCaption": ""

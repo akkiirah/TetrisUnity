@@ -24,17 +24,32 @@ public class ShapeManager : MonoBehaviour
 
     private void HandleTick()
     {
-        if (activeShape != null)
+        if(activeShape != null)
             activeShape.MoveDown();
     }
 
     public void SpawnNewTetromino()
     {
         int i = UnityEngine.Random.Range(0, tetrominoPrefabs.Length);
-        GameObject tetromino = Instantiate(tetrominoPrefabs[i], new Vector3((int)Random.Range(2,10), 25, 0), Quaternion.identity);
+        GameObject tetromino = Instantiate(tetrominoPrefabs[i], new Vector3(5, 17, 0), Quaternion.identity);
         Shape tetrominoScript = tetromino.GetComponent<Shape>();
         activeShape = tetrominoScript;
 
         tetrominoScript.OnLocked += GameManager.Instance.TetrominoLocked;
+    }
+
+    public void MoveShapeDown()
+    {
+        activeShape.MoveDown();
+    }
+
+    public void MoveShapeHorizontal(int dir)
+    {
+        activeShape.MoveHorizontal(dir);
+    }
+
+    public void RotateShape()
+    {
+        activeShape.Rotate();
     }
 }

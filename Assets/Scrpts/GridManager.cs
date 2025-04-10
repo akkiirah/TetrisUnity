@@ -41,7 +41,7 @@ public class GridManager : MonoBehaviour
     {
         int x = Mathf.RoundToInt(pos.x);
         int y = Mathf.RoundToInt(pos.y);
-        return x >= 0 && x < gridWidth && y >= 0; // y wird oft nur nach unten begrenzt
+        return x >= 0 && x < gridWidth && y >= 0;
     }
 
     public bool IsValidPosition()
