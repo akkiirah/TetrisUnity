@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class ShapeManager : MonoBehaviour
 {
-    public static ShapeManager Instance { get; private set; }
-    
     [SerializeField] public GameObject[] tetrominoPrefabs;
     public Shape activeShape;
-    public Vector3 spawnPosition = new Vector3(5, 18, 0);
+    public Vector3 spawnPosition = new(5, 18, 0);
+    public static ShapeManager Instance { get; private set; }
 
-    void Awake()
+    private void Awake()
     {
         if (Instance != null && Instance != this)
             Destroy(gameObject);
@@ -18,21 +17,21 @@ public class ShapeManager : MonoBehaviour
         GameManager.Instance.OnTick += HandleTick;
     }
 
-    void Start()
+    private void Start()
     {
         SpawnNewTetromino();
     }
 
     private void HandleTick()
     {
-        if(activeShape != null)
+        if (activeShape != null)
             activeShape.MoveDown();
     }
 
     public void SpawnNewTetromino()
     {
-        int i = UnityEngine.Random.Range(0, tetrominoPrefabs.Length);
-        GameObject tetromino = Instantiate(tetrominoPrefabs[i], spawnPosition, Quaternion.identity);
+        var i = Random.Range(0, tetrominoPrefabs.Length);
+        var tetromino = Instantiate(tetrominoPrefabs[i], spawnPosition, Quaternion.identity);
 
         if (!GridManager.Instance.IsValidPosition(tetromino.transform))
         {
@@ -40,7 +39,7 @@ public class ShapeManager : MonoBehaviour
             Destroy(tetromino);
         }
 
-        Shape tetrominoScript = tetromino.GetComponent<Shape>();
+        var tetrominoScript = tetromino.GetComponent<Shape>();
         activeShape = tetrominoScript;
 
         tetrominoScript.OnLocked += GameManager.Instance.TetrominoLocked;

@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class Shape : MonoBehaviour
 {
-    public event Action OnLocked;
-    
     [SerializeField] public float speed = 1;
-    private bool isLocked = false;
+    private bool isLocked;
+    public event Action OnLocked;
 
     public void MoveDown()
     {
@@ -23,29 +22,21 @@ public class Shape : MonoBehaviour
     {
         transform.position += new Vector3(dir, 0, 0);
 
-        if (!IsValidPosition())
-        {
-            transform.position += new Vector3((dir * -1), 0, 0);
-        }
+        if (!IsValidPosition()) transform.position += new Vector3(dir * -1, 0, 0);
     }
+
     public void Rotate()
     {
         transform.Rotate(new Vector3(0, 0, 90));
 
-        if (!IsValidPosition())
-        {
-            transform.Rotate(new Vector3(0, 0, -90));
-        }
+        if (!IsValidPosition()) transform.Rotate(new Vector3(0, 0, -90));
     }
 
     public void LockTetromino()
     {
         isLocked = true;
-        
-        foreach (Transform child in transform)
-        {
-            GridManager.Instance.AddBlockToGrid(child);
-        }
+
+        foreach (Transform child in transform) GridManager.Instance.AddBlockToGrid(child);
 
         OnLocked?.Invoke();
     }
@@ -54,17 +45,17 @@ public class Shape : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            Vector3 pos = GridManager.RoundVector3(child.position);
+            var pos = GridManager.RoundVector3(child.position);
 
             if (!GridManager.IsInsideGrid(pos))
                 return false;
 
-            int x = (int)pos.x;
-            int y = (int)pos.y;
+            var x = (int)pos.x;
+            var y = (int)pos.y;
             if (y < GridManager.gridHeight && GridManager.grid[x, y] != null)
                 return false;
         }
+
         return true;
     }
-
 }
