@@ -1,21 +1,11 @@
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+public class GridManager : Singleton<GridManager>
 {
-    public static GridManager Instance;
-
     public static int gridWidth = 10;
     public static int gridHeight = 20;
 
-    public static Transform[,] grid = new Transform[gridWidth, gridHeight];
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-            Destroy(gameObject);
-        else
-            Instance = this;
-    }
+    public Transform[,] grid = new Transform[gridWidth, gridHeight];
 
     private void Update()
     {
@@ -33,7 +23,6 @@ public class GridManager : MonoBehaviour
             Debug.LogWarning("Block position out of grid bounds: " + pos);
             return;
         }
-
         grid[x, y] = block;
     }
 
@@ -49,85 +38,69 @@ public class GridManager : MonoBehaviour
         return x >= 0 && x < gridWidth && y >= 0;
     }
 
-    public bool IsValidPosition()
-    {
-        foreach (Transform child in transform)
-        {
-            var pos = RoundVector3(child.position);
-
-            if (!IsInsideGrid(pos))
-                return false;
-
-            var x = (int)pos.x;
-            var y = (int)pos.y;
-            if (y < gridHeight && grid[x, y] != null)
-                return false;
-        }
-
-        return true;
-    }
-
     public bool IsValidPosition(Transform _transform)
     {
         foreach (Transform child in _transform)
         {
             var pos = RoundVector3(child.position);
-
             if (!IsInsideGrid(pos))
                 return false;
-
-            var x = (int)pos.x;
-            var y = (int)pos.y;
+            int x = (int)pos.x;
+            int y = (int)pos.y;
             if (y < gridHeight && grid[x, y] != null)
                 return false;
         }
-
         return true;
     }
 
     public bool IsRowFull(int y)
     {
-        for (var x = 0; x < gridWidth; x++)
+        for (int x = 0; x < gridWidth; x++)
+        {
             if (grid[x, y] == null)
                 return false;
+        }
         return true;
     }
 
     public void DeleteRow(int y)
     {
-        for (var x = 0; x < gridWidth; x++)
+        for (int x = 0; x < gridWidth; x++)
+        {
             if (grid[x, y] != null)
             {
                 Destroy(grid[x, y].gameObject);
                 grid[x, y] = null;
             }
+        }
     }
 
     public void MoveRowsDown(int startY)
     {
-        for (var y = startY; y < gridHeight; y++)
-        for (var x = 0; x < gridWidth; x++)
-            if (grid[x, y] != null)
+        for (int y = startY; y < gridHeight; y++)
+        {
+            for (int x = 0; x < gridWidth; x++)
             {
-                // Aktualisiere die Grid-Datenstruktur:
-                grid[x, y - 1] = grid[x, y];
-                grid[x, y] = null;
-
-                // Verschiebe den Block visuell um 1 Einheit nach unten
-                grid[x, y - 1].position += new Vector3(0, -1, 0);
+                if (grid[x, y] != null)
+                {
+                    grid[x, y - 1] = grid[x, y];
+                    grid[x, y] = null;
+                    grid[x, y - 1].position += new Vector3(0, -1, 0);
+                }
             }
+        }
     }
 
     public void DeleteFullRows()
     {
-        for (var y = 0; y < gridHeight; y++)
+        for (int y = 0; y < gridHeight; y++)
+        {
             if (IsRowFull(y))
             {
                 DeleteRow(y);
                 MoveRowsDown(y + 1);
-                // Nachdem die Reihen nachgezogen wurden, muss derselbe Index erneut gepr�ft werden,
-                // da nun eine neue Reihe an dieser Stelle stehen k�nnte.
                 y--;
             }
+        }
     }
 }

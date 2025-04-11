@@ -1,63 +1,42 @@
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class InputManager : Singleton<InputManager>
 {
-    private readonly float repeatDelay = .5f;
+    private readonly float repeatDelay = 0.5f;
     private readonly float repeatRate = 0.05f;
     private float lastRepeatTime;
     private bool sKeyIsHeld;
-
     private float sKeyPressTime;
-    public static InputManager Instance { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-            Destroy(gameObject);
-        else
-            Instance = this;
-    }
 
     private void Update()
     {
-        var horizontalInput = GetInputHorizontal();
-        var verticalInput = GetInputVertical();
-        var rotateInput = GetRotate();
+        int horizontalInput = GetInputHorizontal();
+        int verticalInput = GetInputVertical();
+        bool rotateInput = GetRotate();
 
-        if (horizontalInput != 0 || verticalInput != 0)
+        if (horizontalInput != 0)
         {
-            switch (horizontalInput)
-            {
-                case -1:
-                    ShapeManager.Instance.MoveShapeHorizontal(-1);
-                    break;
-                case 1:
-                    ShapeManager.Instance.MoveShapeHorizontal(1);
-                    break;
-            }
-
-            switch (verticalInput)
-            {
-                case -1:
-                    ShapeManager.Instance.MoveShapeDown();
-                    break;
-            }
+            if (horizontalInput == -1)
+                ShapeManager.Instance.MoveShapeHorizontal(-1);
+            else if (horizontalInput == 1)
+                ShapeManager.Instance.MoveShapeHorizontal(1);
         }
 
-        if (rotateInput) ShapeManager.Instance.RotateShape();
+        if (verticalInput == -1)
+            ShapeManager.Instance.MoveShapeDown();
+
+        if (rotateInput)
+            ShapeManager.Instance.RotateShape();
     }
 
     public int GetInputHorizontal()
     {
-        var horizontalInput = Input.GetKeyDown(KeyCode.D) ? 1 : Input.GetKeyDown(KeyCode.A) ? -1 : 0;
-
-        return horizontalInput;
+        return Input.GetKeyDown(KeyCode.D) ? 1 : Input.GetKeyDown(KeyCode.A) ? -1 : 0;
     }
 
     public int GetInputVertical()
     {
-        var verticalInput = 0;
-
+        int verticalInput = 0;
         if (Input.GetKeyDown(KeyCode.S))
         {
             verticalInput = -1;
@@ -65,21 +44,18 @@ public class InputManager : MonoBehaviour
             sKeyIsHeld = true;
             lastRepeatTime = Time.time;
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) && sKeyIsHeld)
         {
-            if (sKeyIsHeld)
-                if (Time.time - sKeyPressTime >= repeatDelay)
-                    if (Time.time - lastRepeatTime >= repeatRate)
-                    {
-                        verticalInput = -1;
-                        lastRepeatTime = Time.time;
-                    }
+            if (Time.time - sKeyPressTime >= repeatDelay && Time.time - lastRepeatTime >= repeatRate)
+            {
+                verticalInput = -1;
+                lastRepeatTime = Time.time;
+            }
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
             sKeyIsHeld = false;
         }
-
         return verticalInput;
     }
 

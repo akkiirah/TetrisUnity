@@ -1,19 +1,17 @@
 using System;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public ReflectionProbe reflectionProbe;
     public float tickInterval = 1f;
     private float tickTimer;
-    public static GameManager Instance { get; private set; }
+
+    public event Action OnTick;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-            Destroy(gameObject);
-        else
-            Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
@@ -26,8 +24,6 @@ public class GameManager : MonoBehaviour
             OnTick?.Invoke();
         }
     }
-
-    public event Action OnTick;
 
     public void TetrominoLocked()
     {

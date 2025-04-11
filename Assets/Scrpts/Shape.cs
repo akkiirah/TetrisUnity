@@ -4,7 +4,6 @@ using UnityEngine;
 public class Shape : MonoBehaviour
 {
     [SerializeField] public float speed = 1;
-    private bool isLocked;
     public event Action OnLocked;
 
     public void MoveDown()
@@ -34,8 +33,6 @@ public class Shape : MonoBehaviour
 
     public void LockTetromino()
     {
-        isLocked = true;
-
         foreach (Transform child in transform) GridManager.Instance.AddBlockToGrid(child);
 
         OnLocked?.Invoke();
@@ -52,7 +49,7 @@ public class Shape : MonoBehaviour
 
             var x = (int)pos.x;
             var y = (int)pos.y;
-            if (y < GridManager.gridHeight && GridManager.grid[x, y] != null)
+            if (y < GridManager.gridHeight && GridManager.Instance.grid[x, y] != null)
                 return false;
         }
 
