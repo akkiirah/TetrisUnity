@@ -31,20 +31,29 @@ public class InputManager : Singleton<InputManager>
 
     public int GetInputHorizontal()
     {
-        return Input.GetKeyDown(KeyCode.D) ? 1 : Input.GetKeyDown(KeyCode.A) ? -1 : 0;
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            return 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            return -1;
+        }
+        return 0;
     }
+
 
     public int GetInputVertical()
     {
         int verticalInput = 0;
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             verticalInput = -1;
             sKeyPressTime = Time.time;
             sKeyIsHeld = true;
             lastRepeatTime = Time.time;
         }
-        else if (Input.GetKey(KeyCode.S) && sKeyIsHeld)
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) && sKeyIsHeld)
         {
             if (Time.time - sKeyPressTime >= repeatDelay && Time.time - lastRepeatTime >= repeatRate)
             {
@@ -52,7 +61,7 @@ public class InputManager : Singleton<InputManager>
                 lastRepeatTime = Time.time;
             }
         }
-        else if (Input.GetKeyUp(KeyCode.S))
+        else if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
         {
             sKeyIsHeld = false;
         }
@@ -61,6 +70,6 @@ public class InputManager : Singleton<InputManager>
 
     public bool GetRotate()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow);
     }
 }
