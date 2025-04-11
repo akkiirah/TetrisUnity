@@ -4058,6 +4058,8 @@ MonoBehaviour:
   - {fileID: 8550149608350379299, guid: f82c05d05a0065b4e9a512aca5c3599c, type: 3}
   - {fileID: 877402596848947628, guid: dd88128a8c2d8854f8b8ab09e81c2eb7, type: 3}
   - {fileID: 7507581313031126452, guid: 8c2ae94ef3f670c48a80b283056d12e5, type: 3}
+  - {fileID: 877402596848947628, guid: 345cb4c746158b448ad62611a0cf3bb1, type: 3}
+  - {fileID: 490897952678768880, guid: 11b2d173918f0384ab2a59aa1c838c5f, type: 3}
   shapesContainer: {fileID: 166688397}
   activeShape: {fileID: 0}
   spawnPosition: {x: 5, y: 18, z: 0}
@@ -8114,5 +8116,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1066573945}
-  - {fileID: 2033064277}
   - {fileID: 166688397}
+  - {fileID: 2033064277}
