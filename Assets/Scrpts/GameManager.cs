@@ -14,6 +14,11 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(gameObject);
     }
 
+    void Start()
+    {
+        ShapeManager.Instance.OnShapeMove += HandleShapeMove;
+    }
+
     private void Update()
     {
         tickTimer += Time.deltaTime;
@@ -28,6 +33,10 @@ public class GameManager : Singleton<GameManager>
     public void TetrominoLocked()
     {
         ShapeManager.Instance.SpawnNewTetromino();
+    }
+    public void HandleShapeMove()
+    {
+        reflectionProbe.RenderProbe();
     }
 
     public void GameOver()
