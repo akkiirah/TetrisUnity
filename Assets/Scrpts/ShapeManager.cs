@@ -7,9 +7,11 @@ public class ShapeManager : Singleton<ShapeManager>
     [SerializeField] private Transform shapesContainer;
 
     public Shape activeShape;
+    public GameObject nextShape { get; private set; }
     public Vector3 spawnPosition = new Vector3(5, 18, 0);
 
     public event Action OnShapeMove;
+    public event Action OnSpawn;
 
     private void Start()
     {
@@ -25,8 +27,12 @@ public class ShapeManager : Singleton<ShapeManager>
 
     public void SpawnNewTetromino()
     {
-        int i = UnityEngine.Random.Range(0, tetrominoPrefabs.Length);
-        GameObject tetromino = Instantiate(tetrominoPrefabs[i], spawnPosition, Quaternion.identity, shapesContainer);
+        GameObject currentPrefab = (nextShape != null)
+            ? nextShape
+            : tetrominoPrefabs[UnityEngine.Random.Range(0, tetrominoPrefabs.Length)];
+
+        GameObject tetromino = Instantiate(currentPrefab, spawnPosition, Quaternion.identity, shapesContainer);
+        nextShape = tetrominoPrefabs[UnityEngine.Random.Range(0, tetrominoPrefabs.Length)];
 
         if (!GridManager.Instance.IsValidPosition(tetromino.transform))
         {
@@ -39,6 +45,8 @@ public class ShapeManager : Singleton<ShapeManager>
         activeShape = tetrominoScript;
 
         tetrominoScript.OnLocked += GameManager.Instance.TetrominoLocked;
+
+        OnSpawn?.Invoke();
     }
 
     public void MoveShapeDown()
