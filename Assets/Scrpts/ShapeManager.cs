@@ -16,23 +16,31 @@ public class ShapeManager : Singleton<ShapeManager>
     private void Start()
     {
         GameManager.Instance.OnTick += HandleTick;
-        SpawnNewTetromino();
     }
 
     private void HandleTick()
     {
-        if (activeShape != null)
+        if (activeShape)
+        {
             activeShape.MoveDown();
+        }
+        else
+        {
+            SpawnNewTetromino();
+        }
     }
 
     public void SpawnNewTetromino()
     {
+
         GameObject currentPrefab = (nextShape != null)
             ? nextShape
             : tetrominoPrefabs[UnityEngine.Random.Range(0, tetrominoPrefabs.Length)];
 
         GameObject tetromino = Instantiate(currentPrefab, spawnPosition, Quaternion.identity, shapesContainer);
         nextShape = tetrominoPrefabs[UnityEngine.Random.Range(0, tetrominoPrefabs.Length)];
+
+        Debug.Log(nextShape);
 
         if (!GridManager.Instance.IsValidPosition(tetromino.transform))
         {
@@ -45,7 +53,7 @@ public class ShapeManager : Singleton<ShapeManager>
         activeShape = tetrominoScript;
 
         tetrominoScript.OnLocked += GameManager.Instance.TetrominoLocked;
-
+        Debug.Log("OnSpawn?.Invoke();");
         OnSpawn?.Invoke();
     }
 

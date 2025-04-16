@@ -12,7 +12,6 @@ public class ShowNextScript : MonoBehaviour
 
     void HandleSpawn()
     {
-        Debug.Log("hello there");
         if (currentPrefab)
         {
             Destroy(currentPrefab);
@@ -20,6 +19,6 @@ public class ShowNextScript : MonoBehaviour
         newPrefab = ShapeManager.Instance.nextShape;
         GameObject tetromino = Instantiate(newPrefab, gameObject.transform.position, Quaternion.identity, gameObject.transform);
         currentPrefab = tetromino;
-        Debug.Log("hello there");
+        Debug.Log(currentPrefab);
     }
 }
