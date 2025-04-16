@@ -53,6 +53,7 @@ public class ShapeManager : Singleton<ShapeManager>
         activeShape = tetrominoScript;
 
         tetrominoScript.OnLocked += GameManager.Instance.TetrominoLocked;
+        tetrominoScript.OnLocked += GridManager.Instance.HandleShapeLocked;
         Debug.Log("OnSpawn?.Invoke();");
         OnSpawn?.Invoke();
     }

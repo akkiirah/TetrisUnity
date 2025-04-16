@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GridManager : Singleton<GridManager>
@@ -7,7 +8,9 @@ public class GridManager : Singleton<GridManager>
 
     public Transform[,] grid = new Transform[gridWidth, gridHeight];
 
-    private void Update()
+    public event Action OnLinesDeleted;
+
+    public void HandleShapeLocked()
     {
         DeleteFullRows();
     }
@@ -93,6 +96,9 @@ public class GridManager : Singleton<GridManager>
 
     public void DeleteFullRows()
     {
+        int rowCount = 0;
+        int mod = 0;
+
         for (int y = 0; y < gridHeight; y++)
         {
             if (IsRowFull(y))
@@ -100,7 +106,13 @@ public class GridManager : Singleton<GridManager>
                 DeleteRow(y);
                 MoveRowsDown(y + 1);
                 y--;
+                rowCount++;
             }
         }
+
+        int score = 100 << (rowCount - 1);
+
+        GameManager.Instance.score += score;
+        OnLinesDeleted?.Invoke();
     }
 }

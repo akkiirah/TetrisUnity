@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
     public ReflectionProbe reflectionProbe;
     public float tickInterval = 1f;
     private float tickTimer;
+    public int score = 0;
 
     public event Action OnTick;
 
