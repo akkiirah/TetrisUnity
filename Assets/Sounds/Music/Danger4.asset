@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4456c7baf6f8a4f81812fd19d57ea1, type: 3}
   m_Name: Danger4
   m_EditorClassIdentifier: 
+  displayName: 
   clip: {fileID: 8300000, guid: 09cece14d45446e4a8dd210ed9ac1081, type: 3}
-  songStartStateChange: 9.22
-  songStartAnew: 0
-  fadeInTime: 1
-  fadeOutTime: 1
+  songStartStateChange: 50.3
+  songStartAnew: 5.8
+  fadeStateChange: 3.1
+  fadeLoop: 3.92
   volume: 0.35

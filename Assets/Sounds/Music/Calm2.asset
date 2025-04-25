@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: 
   clip: {fileID: 8300000, guid: e2d5097fc3b873441861f060dccc6184, type: 3}
-  songStartStateChange: 86
-  songStartAnew: 86
-  fadeStateChange: 1
-  fadeLoop: 2
+  songStartStateChange: 50.4
+  songStartAnew: 7.18
+  fadeStateChange: 4.6
+  fadeLoop: 4
   volume: 0.35

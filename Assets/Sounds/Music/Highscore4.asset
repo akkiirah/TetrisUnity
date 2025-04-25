@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4456c7baf6f8a4f81812fd19d57ea1, type: 3}
   m_Name: Highscore4
   m_EditorClassIdentifier: 
+  displayName: 
   clip: {fileID: 8300000, guid: 83ed64acfc0b67c48a2cea49ee056595, type: 3}
-  songStartStateChange: 58.26
-  songStartAnew: 0
-  fadeInStateChange: 4
-  fadeInAnew: 0.5
-  fadeOutTime: 1
+  songStartStateChange: 62.38
+  songStartAnew: 7.6
+  fadeStateChange: 3.5
+  fadeLoop: 3.32
   volume: 0.35

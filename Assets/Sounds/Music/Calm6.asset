@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4456c7baf6f8a4f81812fd19d57ea1, type: 3}
   m_Name: Calm6
   m_EditorClassIdentifier: 
+  displayName: 
   clip: {fileID: 8300000, guid: 603b2c50bc9ed5844a2b188a9ef7f511, type: 3}
-  songStartStateChange: 17.37
-  songStartAnew: 0
-  fadeInStateChange: 1
-  fadeInAnew: 0.5
-  fadeOutTime: 4
+  songStartStateChange: 16.18
+  songStartAnew: 7.2
+  fadeStateChange: 2.45
+  fadeLoop: 4.8
   volume: 0.35

@@ -2682,12 +2682,21 @@ MonoBehaviour:
   calmTracks:
   - {fileID: 11400000, guid: 97b9139ee6377064eb9c9ed425a4c28c, type: 2}
   - {fileID: 11400000, guid: 35e23d90e4151bc4fa7c9788a0938564, type: 2}
+  - {fileID: 11400000, guid: 03872a7e789269346876aa6faa05f55e, type: 2}
+  - {fileID: 11400000, guid: 7a52bcfc5be56284eb0d71d0b9d406c9, type: 2}
+  - {fileID: 11400000, guid: 1ed409ca4c3339040945c7aa59ef621e, type: 2}
+  - {fileID: 11400000, guid: c4ace1209f2b8dc4b8176a77563ef432, type: 2}
+  - {fileID: 11400000, guid: 07d0197cdbd277e4499544b572f34c2c, type: 2}
   dangerTracks:
   - {fileID: 11400000, guid: 5217a9bc0363d7d47acbf7f1724d6669, type: 2}
   - {fileID: 11400000, guid: 410585b29b208254898e62e3cd846d8d, type: 2}
   - {fileID: 11400000, guid: 17ce7f519296ab047ba8cee6bf85ff04, type: 2}
+  - {fileID: 11400000, guid: e1d33a61169af2242939c22c89d6ca72, type: 2}
   highscoreTracks:
+  - {fileID: 11400000, guid: b711ce3fee77a7d4fb4f101f0dad2586, type: 2}
+  - {fileID: 11400000, guid: 7836d56bccca4be408771e043ea9c5f8, type: 2}
   - {fileID: 11400000, guid: 8beaf5e9fcb65a043b3a37b1df734abf, type: 2}
+  - {fileID: 11400000, guid: c934985b9a629604892c8fc9c6748f19, type: 2}
 --- !u!1001 &1170460181
 PrefabInstance:
   m_ObjectHideFlags: 0
