@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Highscore3
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: d5c65cebcf3c64a4ba2e2f1ac169db55, type: 3}
-  songStartStateChange: 34.87
+  songStartStateChange: 37.7
   songStartAnew: 0
-  fadeInStateChange: 4
-  fadeInAnew: 0.5
-  fadeOutTime: 1
+  fadeStateChange: 2.7
+  fadeLoop: 0.5
   volume: 0.35

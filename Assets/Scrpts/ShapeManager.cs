@@ -4,7 +4,6 @@ using UnityEngine;
 public class ShapeManager : Singleton<ShapeManager>
 {
     [SerializeField] public GameObject[] tetrominoPrefabs;
-    [SerializeField] public Material[] borderMaterials;
     [SerializeField] private Transform shapesContainer;
     [SerializeField] private GameObject borderContainer;
 
@@ -38,9 +37,9 @@ public class ShapeManager : Singleton<ShapeManager>
         Material clonedMat = new Material(activeShapeMaterial.sharedMaterial);
 
         Color currentClr = clonedMat.GetColor("_Color");
-        Color newEmission = currentClr * 2.0f;
+        Color newEmission = currentClr * 4.6f;
 
-        clonedMat.SetColor("_EmissionColor", newEmission);
+        //clonedMat.SetColor("_EmissionColor", newEmission);
         borderContainer.GetComponent<MeshRenderer>().material = clonedMat;
     }
 
