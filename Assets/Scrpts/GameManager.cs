@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         ShapeManager.Instance.OnShapeMove += HandleShapeMove;
+        tickTimer = tickInterval;
     }
 
     private void Update()

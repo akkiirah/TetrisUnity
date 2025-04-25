@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4456c7baf6f8a4f81812fd19d57ea1, type: 3}
+  m_Name: Calm6
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 603b2c50bc9ed5844a2b188a9ef7f511, type: 3}
+  songStartStateChange: 17.37
+  songStartAnew: 0
+  fadeInStateChange: 1
+  fadeInAnew: 0.5
+  fadeOutTime: 4
+  volume: 0.35

@@ -4,7 +4,9 @@ using UnityEngine;
 public class ShapeManager : Singleton<ShapeManager>
 {
     [SerializeField] public GameObject[] tetrominoPrefabs;
+    [SerializeField] public Material[] borderMaterials;
     [SerializeField] private Transform shapesContainer;
+    [SerializeField] private GameObject borderContainer;
 
     public Shape activeShape;
     public GameObject nextShape { get; private set; }
@@ -30,9 +32,20 @@ public class ShapeManager : Singleton<ShapeManager>
         }
     }
 
+    public void ChangeBorderMaterial()
+    {
+        MeshRenderer activeShapeMaterial = activeShape.transform.GetChild(0).transform.GetChild(0).GetComponent<MeshRenderer>();
+        Material clonedMat = new Material(activeShapeMaterial.sharedMaterial);
+
+        Color currentClr = clonedMat.GetColor("_Color");
+        Color newEmission = currentClr * 2.0f;
+
+        clonedMat.SetColor("_EmissionColor", newEmission);
+        borderContainer.GetComponent<MeshRenderer>().material = clonedMat;
+    }
+
     public void SpawnNewTetromino()
     {
-
         GameObject currentPrefab = (nextShape != null)
             ? nextShape
             : tetrominoPrefabs[UnityEngine.Random.Range(0, tetrominoPrefabs.Length)];
@@ -51,10 +64,10 @@ public class ShapeManager : Singleton<ShapeManager>
 
         Shape tetrominoScript = tetromino.GetComponent<Shape>();
         activeShape = tetrominoScript;
+        ChangeBorderMaterial();
 
         tetrominoScript.OnLocked += GameManager.Instance.TetrominoLocked;
         tetrominoScript.OnLocked += GridManager.Instance.HandleShapeLocked;
-        Debug.Log("OnSpawn?.Invoke();");
         OnSpawn?.Invoke();
     }
 
